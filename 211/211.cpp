@@ -30,28 +30,16 @@ void GameRules::displayRules() const {
 
 using namespace std;
 
-const int CONSOLE_WIDTH = 80;
-const int CONSOLE_HEIGHT = 25;
-
-void print_centered(const string& message) {
-    int padding = (CONSOLE_WIDTH - message.size()) / 2;
-    cout << string(padding, ' ') << message << endl;
-}
-
 void print_field(int field[][6], int size, HANDLE hConsole) {
     COORD coord = { 0, 0 };
     SetConsoleCursorPosition(hConsole, coord);
-    int field_width = size * 5 + 1;
-    int padding = (CONSOLE_WIDTH - field_width) / 2;
 
     for (int i = 0; i < size; i++) {
-        cout << string(padding, ' ');
         for (int j = 0; j < size; j++) {
             cout << "+----";
         }
         cout << "+" << endl;
 
-        cout << string(padding, ' ');
         for (int j = 0; j < size; j++) {
             if (field[i][j] == 0)
                 cout << "|    ";
@@ -60,7 +48,7 @@ void print_field(int field[][6], int size, HANDLE hConsole) {
         }
         cout << "|" << endl;
     }
-    cout << string(padding, ' ');
+
     for (int j = 0; j < size; j++) {
         cout << "+----";
     }
@@ -121,13 +109,13 @@ int select_option(const vector<string>& options, const string& message) {
     int selected = 0;
     while (true) {
         system("cls");
-        print_centered(message);
+        cout << message << endl;
         for (int i = 0; i < options.size(); i++) {
             if (i == selected) {
-                print_centered("> " + options[i] + " <");
+                cout << "> " << options[i] << " <" << endl;
             }
             else {
-                print_centered("  " + options[i] + "  ");
+                cout << "  " << options[i] << "  " << endl;
             }
         }
         char key = _getch();
