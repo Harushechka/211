@@ -13,7 +13,7 @@ public:
     void displayRules() const;
 };
 
-void GameRules::displayRules() const {
+void GameRules::displayRules() const { //ауауауауауауа
     std::cout << "Правила игры:\n"
         << "Выставить по порядку «квадратики», с пометкой от одного до пятнадцати.\n"
         << "Одна только трудность: пустующее окошко лишь одно.\n"
