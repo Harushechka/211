@@ -60,10 +60,10 @@ bool move(int field[][6], int size, int& zero_i, int& zero_j) {
         char key = _getch();
         int new_i = zero_i, new_j = zero_j;
         switch (key) {
-        case 72: new_i--; break; // стрелка вверх
-        case 80: new_i++; break; // стрелка вниз
-        case 75: new_j--; break; // стрелка влево
-        case 77: new_j++; break; // стрелка вправо
+        case 72: new_i--; break; //стрелка вверх
+        case 80: new_i++; break; //стрелка вниз
+        case 75: new_j--; break; //стрелка влево
+        case 77: new_j++; break; //стрелка вправо
         default: return false;
         }
         if (new_i >= 0 && new_i < size && new_j >= 0 && new_j < size) {
@@ -77,7 +77,7 @@ bool move(int field[][6], int size, int& zero_i, int& zero_j) {
     return false;
 }
 
-bool check_win(int field[][6], int size) {
+bool check_win(int field[][6], int size) { //проверка победы
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             if (field[i][j] != (i * size + j + 1) % (size * size)) {
@@ -120,9 +120,9 @@ int select_option(const vector<string>& options, const string& message) {
         }
         char key = _getch();
         switch (key) {
-        case 72: selected = (selected - 1 + options.size()) % options.size(); break; // стрелка вверх
-        case 80: selected = (selected + 1) % options.size(); break; // стрелка вниз
-        case 13: return selected; // Enter
+        case 72: selected = (selected - 1 + options.size()) % options.size(); break; //стрелка вверх
+        case 80: selected = (selected + 1) % options.size(); break; //стрелка вниз
+        case 13: return selected; //Enter
         }
     }
 }
@@ -132,7 +132,7 @@ void startGame() {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO cursorInfo;
     GetConsoleCursorInfo(hConsole, &cursorInfo);
-    cursorInfo.bVisible = false; // скрыть курсор
+    cursorInfo.bVisible = false; //скрыть курсор
     SetConsoleCursorInfo(hConsole, &cursorInfo);
 
     while (true) {
@@ -154,7 +154,7 @@ void startGame() {
                     break;
                 }
                 else {
-                    cursorInfo.bVisible = true; // вернуть курсор
+                    cursorInfo.bVisible = true; //вернуть курсор
                     SetConsoleCursorInfo(hConsole, &cursorInfo);
                     return;
                 }
@@ -163,7 +163,7 @@ void startGame() {
         }
     }
 
-    cursorInfo.bVisible = true; // вернуть курсор
+    cursorInfo.bVisible = true; 
     SetConsoleCursorInfo(hConsole, &cursorInfo);
 }
 
@@ -194,7 +194,7 @@ int main() {
             break;
         case 3:
             std::cout << "Рекорды" << std::endl;
-            // код для таблицы рекордов
+            //код для таблицы рекордов
             break;
         case 4:
             std::cout << "Досвидание!" << std::endl;
